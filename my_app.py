@@ -2,6 +2,7 @@
 from PyQt5.QtCore import Qt  # alignment
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout
 from instr import *
+from second_win import *
 
 class MainWin(QWidget):
     def __init__(self):
@@ -9,7 +10,7 @@ class MainWin(QWidget):
         self.set_appear()
         self.initUI()
         self.connects()
-        self.show()
+        self.show()    
 
     def set_appear(self):
         self.setWindowTitle(txt_title)
@@ -17,7 +18,7 @@ class MainWin(QWidget):
         self.move(win_x, win_y)
 
     def initUI(self):
-        #init object
+        # init object
         self.hello_text = QLabel(txt_hello)
         self.instruction = QLabel(txt_instruction)
         self.button = QPushButton(txt_next)
@@ -26,11 +27,11 @@ class MainWin(QWidget):
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.hello_text)
         self.layout.addWidget(self.instruction)
-        self.layout.addWidget(self.button, Qt.AlignCenter)
+        self.layout.addWidget(self.button, alignment=Qt.AlignCenter)
 
         # set main layout
         self.setLayout(self.layout)
-
+    
     def connects(self):
         self.button.clicked.connect(self.next_click)
 
